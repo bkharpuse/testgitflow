@@ -17,11 +17,12 @@ jobs:
           env || grep "COMMIT"
       - name: ruuuuuu
         run: |
+          # Python script to shorten the SHA to 7 characters
           python3 -c "
-            import os
-            commit_sha = os.getenv('CI_COMMIT_SHA', '')[:7]
-            print(f'SHORT_SHA={commit_sha}')
-            " > .env
+import os
+commit_sha = os.getenv('CI_COMMIT_SHA', '')[:7]
+print(f'SHORT_SHA={commit_sha}')
+" > .env
           source .env
           echo "Shortened SHA: $SHORT_SHA"
       - name: pr
