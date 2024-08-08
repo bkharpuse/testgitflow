@@ -18,7 +18,7 @@ jobs:
       - name: Set SHORT_SHA
         id: set_short_sha
         run: |
-          SHORT_SHA=$(python3 -c "print('${{ github.sha }}'[:7])")
+          SHORT_SHA=$(python3 -c "print(''[:7])")
           echo "SHORT_SHA=$SHORT_SHA" >> $GITHUB_ENV
       - name: pr
         run: |
