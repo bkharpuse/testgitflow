@@ -8,7 +8,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Print the input tag to STDOUT
         run: |
-          cal=$(git rev-parse --short ${{ github.sha }})
-          echo "COMMIT_SHA_SHORT=$cal" >> $GITHUB_ENV
-          echo ${{ env.COMMIT_SHA_SHORT }}
-          env
+          echo "COMMIT_SHA_SHORT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
+      - name: run
+        run: |
+          echo "${{ env.COMMIT_SHA_SHORT }}"
+          env || grep "COMMIT"
