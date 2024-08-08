@@ -1,0 +1,12 @@
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  print-tag:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Print the input tag to STDOUT
+        run: |
+          cal=$(git rev-parse --short ${{ github.sha }})
+          echo "COMMIT_SHA_SHORT=$cal" >> $GITHUB_ENV
+          echo ${{ env.COMMIT_SHA_SHORT }}
