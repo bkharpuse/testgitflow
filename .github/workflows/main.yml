@@ -1,6 +1,8 @@
 on:
   push:
   workflow_dispatch:
+env:
+  CI_COMMIT_SHA: ${{ github.sha }}
 jobs:
   print-tag:
     runs-on: ubuntu-latest 
@@ -13,3 +15,16 @@ jobs:
         run: |
           echo "${{ env.COMMIT_SHA_SHORT }}"
           env || grep "COMMIT"
+      - name: ruuuuuu
+        run: |
+          #!/usr/bin/env python3
+          import subprocess
+          import os
+          short_sha = $CI_COMMIT_SHA[:7]
+          with open(os.environ['GITHUB_ENv'], 'a') as env_file:
+            env_file.write(f"SHORT_SHA={short_sha}\n")
+      - name: pr
+        run: |
+          env || grep "SHORT"
+          echo ${SHORT_SHA}
+          
