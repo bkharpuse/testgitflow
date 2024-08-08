@@ -15,16 +15,11 @@ jobs:
         run: |
           echo "${{ env.COMMIT_SHA_SHORT }}"
           env || grep "COMMIT"
-      - name: ruuuuuu
+      - name: Set SHORT_SHA
+        id: set_short_sha
         run: |
-          # Python script to shorten the SHA to 7 characters
-          python3 -c "
-import os
-commit_sha = os.getenv('CI_COMMIT_SHA', '')[:7]
-print(f'SHORT_SHA={commit_sha}')
-" > .env
-          source .env
-          echo "Shortened SHA: $SHORT_SHA"
+          SHORT_SHA=$(python3 -c "print('${{ github.sha }}'[:7])")
+          echo "SHORT_SHA=$SHORT_SHA" >> $GITHUB_ENV
       - name: pr
         run: |
           env || grep "SHORT"
