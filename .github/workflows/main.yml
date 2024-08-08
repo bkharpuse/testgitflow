@@ -23,9 +23,12 @@ jobs:
       - name: pr
         run: |
           env || grep "SHORT"
-          echo ${SHORT_SHA}
+          echo ${{ env.SHORT_SHA }}
       - name: Set SHORT_SHA using bash
         run: |
           SHORT_SHA_1=$(echo "${{ github.sha }}" | cut -c1-7)
           echo "SHORT_SHA_BASH=$SHORT_SHA_1" >> $GITHUB_ENV
+      - name: Show bash sha
+        run: |
+          echo "${{ env.SHORT_SHA_BASH }}"
           
