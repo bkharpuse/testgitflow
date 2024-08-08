@@ -11,3 +11,4 @@ jobs:
           cal=$(git rev-parse --short ${{ github.sha }})
           echo "COMMIT_SHA_SHORT=$cal" >> $GITHUB_ENV
           echo ${{ env.COMMIT_SHA_SHORT }}
+          env
