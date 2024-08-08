@@ -5,6 +5,7 @@ jobs:
   print-tag:
     runs-on: ubuntu-latest 
     steps:
+      - uses: actions/checkout@v4
       - name: Print the input tag to STDOUT
         run: |
           cal=$(git rev-parse --short ${{ github.sha }})
