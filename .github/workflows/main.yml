@@ -26,6 +26,6 @@ jobs:
           echo ${SHORT_SHA}
       - name: Set SHORT_SHA using bash
         run: |
-          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
-          echo "SHORT_SHA_BASH=$SHORT_SHA" >> $GITHUB_ENV
+          SHORT_SHA_1=$(echo "${{ github.sha }}" | cut -c1-7)
+          echo "SHORT_SHA_BASH=$SHORT_SHA_1" >> $GITHUB_ENV
           
