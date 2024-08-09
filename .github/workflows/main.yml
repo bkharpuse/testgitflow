@@ -1,12 +1,21 @@
 on:
   push:
   workflow_dispatch:
+    inputs:
+      ENV: 
+        description: env variavle
+        type: string
+        default: "dev"
 env:
   CI_COMMIT_SHA: ${{ github.sha }}
+  ENV: ${{ github.events.inputs.ENV }}
 jobs:
   print-tag:
     runs-on: ubuntu-latest 
     steps:
+      - name: set env
+        run: |
+          echo "ENV_VAR=${{ github.events.inputs.ENV }}" >> $GITHUB_ENV
       - uses: actions/checkout@v4
       - name: Print the input tag to STDOUT
         run: |
