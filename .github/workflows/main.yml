@@ -4,8 +4,8 @@ on:
     inputs:
       ENV: 
         description: env variavle
-        type: string
-        default: "dev"
+        required: false
+        default: 'dev'
 env:
   CI_COMMIT_SHA: ${{ github.sha }}
   ENV: ${{ github.event.inputs.ENV }}
